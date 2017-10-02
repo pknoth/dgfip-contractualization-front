@@ -15,7 +15,7 @@ export class AuthService {
     //   '&response_type=token' +
     //   '&redirect_uri=' + config.oauthRedirectURI
     // const res = 'http://localhost:3000/users/auth/dgfip'
-    const res = 'http://localhost:3000/users/auth/france_connect'
+    const res = 'http://impots.particulier.api.gouv.fr/users/auth/france_connect'
     return encodeURI(res)
   }
 
