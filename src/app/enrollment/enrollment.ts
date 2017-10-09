@@ -88,7 +88,7 @@ export class Enrollment {
     return this.documents.filter((e) => e.type == 'Document::FranceConnectCompliance')[0]
   }
   conventionUrl () {
-    return 'http://localhost:3000/api/enrollments/' +
+    return 'http://impots.particulier.api.gouv.fr/api/enrollments/' +
       this.id +
       '/convention.pdf'
   }
