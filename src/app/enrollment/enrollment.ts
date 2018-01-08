@@ -48,8 +48,9 @@ export class Enrollment {
   serviceDescription: any = {
     main: null,
     deploymentDate: null,
-    seasonality: [],
-    maxCharge: null
+    seasonality: [{
+      type: 'year'
+    }]
   }
   agreement: boolean;
   states: string[] = [
@@ -100,17 +101,17 @@ export class Enrollment {
 
   cnilVoucher () {
     const res = this.documents.filter((e) => e.type == 'Document::CNILVoucher')[0]
-    return res
+    return res || {}
   }
   legalDocument () {
     const res = this.documents.filter((e) => e.type == 'Document::LegalBasis')[0]
-    return res
+    return res || {}
   }
   certificationResults () {
-    return this.documents.filter((e) => e.type == 'Document::CertificationResults')[0]
+    return this.documents.filter((e) => e.type == 'Document::CertificationResults')[0] || {}
   }
   franceConnectCompliance () {
-    return this.documents.filter((e) => e.type == 'Document::FranceConnectCompliance')[0]
+    return this.documents.filter((e) => e.type == 'Document::FranceConnectCompliance')[0] || {}
   }
   conventionUrl () {
     return 'http://impots.particulier.api.gouv.fr/api/enrollments/' +
