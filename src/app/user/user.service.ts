@@ -63,20 +63,12 @@ export class UserService {
   }
 
   getServiceProviders () {
-    // return this.http.get(config.franceConnectUrl + '/oauth/v1/userinfo').toPromise().then((response) => {
-    return Promise.resolve({'service-providers': [{name: 'démarche 1'},  {name: 'démarche 2'}]}).then((response) => {
+    return this.http.get(config.franceConnectUrl + '/oauth/v1/userinfo').toPromise().then((response) => {
       console.log(response)
       return {
         data: response['service-providers']
       }
     })
-    // return Promise.resolve({
-    //   data: [
-    //     { name: 'démarche 1' },
-    //     { name: 'démarche 2' },
-    //     { name: 'démarche 3' }
-    //   ]
-    // })
   }
 
   getToken () {
