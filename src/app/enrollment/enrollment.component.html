@@ -171,6 +171,14 @@
             <h4 *ngIf="enrollment.cnilVoucher().attachment">
               <a target="_blank" href="http://localhost:3000{{enrollment.cnilVoucher().attachment.url}}"><i class="glyphicon glyphicon-file"></i></a>
             </h4>
+            <div class="form-group">
+              <label>Référence de l'avis</label>
+              <p>{{ enrollment.cnilVoucherDetail.reference }}</p>
+            </div>
+            <div class="form-group">
+              <label>Formalité CNIL</label>
+              <p>{{ enrollment.cnilVoucherDetail.formality }}</p>
+            </div>
           </div>
           <div class="cnil-voucher well">
             <h4>Déclaration CNIL de conformité France Connect</h4>
@@ -183,6 +191,22 @@
             <h4 *ngIf="enrollment.certificationResults().attachment">
               <a target="_blank" href="http://localhost:3000{{enrollment.certificationResults().attachment.url}}"><i class="glyphicon glyphicon-file"></i></a>
             </h4>
+            <div class="form-group">
+              <label>Nom</label>
+              <p>{{ enrollment.certificationResultsDetail.name }}</p>
+            </div>
+            <div class="form-group">
+              <label>Fonction</label>
+              <p>{{ enrollment.certificationResultsDetail.position }}</p>
+            </div>
+            <div class="form-group">
+              <label>Date d'homologation</label>
+              <p>{{ enrollment.certificationResultsDetail.start }}</p>
+            </div>
+            <div class="form-group">
+              <label>Durée d'homologation <i>(en mois)</i></label>
+              <p>{{ enrollment.certificationResultsDetail.duration }}</p>
+            </div>
           </div>
         </div>
         <div class="well documents-form" *ngIf="enrollment.state == 'filled_application'">
