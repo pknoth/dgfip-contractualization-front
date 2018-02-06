@@ -27,7 +27,7 @@ export class AuthGuard implements CanActivate {
     } else {
       let token = localStorage.getItem('token')
       if (token) {
-        return this.user.login(token).then(() => true).catch(() => {
+        return this.user.login(token).then((response: any) => true).catch(() => {
           this.notifyAndRedirect()
           false
         })

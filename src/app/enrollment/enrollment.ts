@@ -130,6 +130,9 @@ export class Enrollment {
   certificationAuthorityPublicKey () {
     return this.documents.filter((e) => e.type == 'Document::CertificationAuthorityPublicKey')[0] || {}
   }
+  securityArchive () {
+    return this.documents.filter((e) => e.type == 'Document::SecurityArchive')[0] || {}
+  }
   conventionUrl () {
     return 'http://impots.particulier.api.gouv.fr/api/enrollments/' +
       this.id +
