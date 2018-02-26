@@ -15,7 +15,7 @@ export class OauthCallbackComponent implements OnInit {
     private user: UserService
   ) {
     route.params.subscribe((params) => {
-      return this.user.login(params['token']).then(() => {
+      return this.user.login(params['token']).then((response: any) => {
         const destination = localStorage.getItem('afterLoginDestination') || ''
         localStorage.removeItem('afterLoginDestination')
         return router.navigate([destination])

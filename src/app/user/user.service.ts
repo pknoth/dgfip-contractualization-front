@@ -28,10 +28,11 @@ export class UserService {
     private application: ApplicationRef
   ) { }
 
-  login (token) {
+  login (token): any {
     localStorage.setItem('token', token)
     if (localStorage.getItem('authType') == 'franceConnect') {
-      return this.http.get(config.franceConnectUrl + '/oauth/v1/userinfo').toPromise().then((response) => {
+      // return this.http.get(config.franceConnectUrl + '/oauth/v1/userinfo').toPromise().then((response) => {
+      return Promise.resolve({user: { email: 'fc@france_connect.user'}}).then((response) => {
         this.user = response['user']['email']
         this.loggedIn = true
         this.error = null
@@ -39,7 +40,8 @@ export class UserService {
       })
     }
     if (localStorage.getItem('authType') == 'resourceProvider') {
-      return this.http.get(config.oauth_me_url).toPromise().then((response) => {
+      // return this.http.get(config.oauth_me_url).toPromise().then((response) => {
+      return Promise.resolve({ email: 'test@dgfip.user'}).then((response) => {
         this.user = response['email']
         this.loggedIn = true
         this.error = null
@@ -62,12 +64,20 @@ export class UserService {
   }
 
   getServiceProviders () {
-    return this.http.get(config.franceConnectUrl + '/oauth/v1/userinfo').toPromise().then((response) => {
-      console.log(response)
-      return {
-        data: response['service-providers']
-      }
+    // return this.http.get(config.franceConnectUrl + '/oauth/v1/userinfo').toPromise().then((response) => {
+    //   console.log(response)
+    //   return {
+    //     data: response['service-providers']
+    //   }
+    // })
+    return Promise.resolve({
+      data: [
+        { name: 'démarche 1' },
+        { name: 'démarche 2' },
+        { name: 'démarche 3' }
+      ]
     })
+
   }
 
   getToken () {
